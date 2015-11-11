@@ -25,6 +25,7 @@ class User extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $file;
     public static function tableName()
     {
         return 'user';
@@ -40,11 +41,12 @@ class User extends \yii\db\ActiveRecord
             [['date_of_birth'], 'safe'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['firstname', 'lastname'], 'string', 'max' => 45],
-            [['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'password_reset_token', 'email','pic'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
             [['email'], 'unique'],
-            [['password_reset_token'], 'unique']
+            [['password_reset_token'], 'unique'],
+            [['file'], 'file']
         ];
     }
 
@@ -66,6 +68,7 @@ class User extends \yii\db\ActiveRecord
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'file' => 'Profile Picture',
         ];
     }
 }
